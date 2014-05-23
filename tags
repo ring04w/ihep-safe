@@ -1,0 +1,58 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+ActiveSupport	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:IhepSafe
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+CreateMachines	db/migrate/20140519042953_create_machines.rb	/^class CreateMachines < ActiveRecord::Migration$/;"	c
+CreateUsers	db/migrate/20140519040237_create_users.rb	/^class CreateUsers < ActiveRecord::Migration$/;"	c
+IhepSafe	config/application.rb	/^module IhepSafe$/;"	m
+Machine	app/models/machine.rb	/^class Machine < ActiveRecord::Base$/;"	c
+MachinesController	app/controllers/machines_controller.rb	/^class MachinesController < ApplicationController$/;"	c
+MachinesHelper	app/helpers/machines_helper.rb	/^module MachinesHelper$/;"	m
+PagesController	app/controllers/pages_controller.rb	/^class PagesController < ApplicationController$/;"	c
+PagesHelper	app/helpers/pages_helper.rb	/^module PagesHelper$/;"	m
+ResultsHelper	app/helpers/results_helper.rb	/^module ResultsHelper$/;"	m
+SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
+SessionsHelper	app/helpers/sessions_helper.rb	/^module SessionsHelper$/;"	m
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+UsersHelper	app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
+about	app/controllers/pages_controller.rb	/^  def about$/;"	f	class:PagesController
+admin_user	app/controllers/users_controller.rb	/^    def admin_user$/;"	f	class:UsersController
+callback	app/controllers/pages_controller.rb	/^  def callback$/;"	f	class:PagesController
+change	db/migrate/20140519040237_create_users.rb	/^  def change$/;"	f	class:CreateUsers
+change	db/migrate/20140519042953_create_machines.rb	/^  def change$/;"	f	class:CreateMachines
+correct_user	app/controllers/users_controller.rb	/^    def correct_user$/;"	f	class:UsersController
+create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
+create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
+create_remember_token	app/models/user.rb	/^    def create_remember_token$/;"	f	class:User
+current_user	app/helpers/sessions_helper.rb	/^  def current_user$/;"	f	class:SessionsHelper
+current_user=	app/helpers/sessions_helper.rb	/^  def current_user=(user)$/;"	f	class:SessionsHelper
+current_user?	app/helpers/sessions_helper.rb	/^  def current_user?(user)$/;"	f	class:SessionsHelper
+dashboard	app/controllers/pages_controller.rb	/^  def dashboard$/;"	f	class:PagesController
+destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
+destroy	app/controllers/users_controller.rb	/^  def destroy$/;"	f	class:UsersController
+digest	app/models/user.rb	/^  def User.digest(token)$/;"	F	class:User
+edit	app/controllers/users_controller.rb	/^  def edit$/;"	f	class:UsersController
+home	app/controllers/pages_controller.rb	/^  def home$/;"	f	class:PagesController
+index	app/controllers/machines_controller.rb	/^  def index$/;"	f	class:MachinesController
+index	app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
+new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
+new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
+new_remember_token	app/models/user.rb	/^  def User.new_remember_token$/;"	F	class:User
+redirect_back_or	app/helpers/sessions_helper.rb	/^  def redirect_back_or(default)$/;"	f	class:SessionsHelper
+set_user	app/controllers/users_controller.rb	/^    def set_user$/;"	f	class:UsersController
+show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
+sign_in	app/helpers/sessions_helper.rb	/^  def sign_in(user)$/;"	f	class:SessionsHelper
+sign_out	app/helpers/sessions_helper.rb	/^  def sign_out$/;"	f	class:SessionsHelper
+signed_in?	app/helpers/sessions_helper.rb	/^  def signed_in?$/;"	f	class:SessionsHelper
+signed_in_user	app/controllers/users_controller.rb	/^    def signed_in_user$/;"	f	class:UsersController
+signed_in_user	app/helpers/sessions_helper.rb	/^  def signed_in_user$/;"	f	class:SessionsHelper
+store_location	app/helpers/sessions_helper.rb	/^  def store_location$/;"	f	class:SessionsHelper
+update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController
+user_params	app/controllers/users_controller.rb	/^    def user_params$/;"	f	class:UsersController

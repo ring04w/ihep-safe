@@ -1,0 +1,12 @@
+language: ruby
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgresql
+branches:
+  only:
+    - 'master'
+rvm:
+  - 2.0.0
+notifications:
+  email: false

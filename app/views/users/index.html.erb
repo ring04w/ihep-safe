@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Dashboard
+        <small>It's Nice to Meet You!</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a>
+        </li>
+        <li>Dashboard</li>
+        <li class="active">All users</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <div class="panel-title">All users</div>
+        </div>
+        <div class="panel-body">
+
+          <%= will_paginate %>
+            <ul class="users">
+              <%= render @users %>
+            </ul>
+          <%= will_paginate %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
