@@ -8,6 +8,13 @@ class PagesController < ApplicationController
   end
   def dashboard
   end
+  def testcallback
+    user=User.find_by(email:"qfz@ihep.ac.cn")
+    if user
+      sign_in user
+      redirect_back_or user_machines_path(user)
+    end
+  end
   def callback
     data={
       client_id:ENV['APP_KEY'],

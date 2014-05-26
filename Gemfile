@@ -18,6 +18,10 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'whenever',:require => false
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'sidekiq'
+gem 'sinatra',require: false
+gem 'slim'
+gem 'daemon-spawn'
 
 group :doc do
   gem 'sdoc','~> 0.4.0'

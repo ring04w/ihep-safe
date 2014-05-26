@@ -1,12 +1,20 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web, at: "/sidekiq"
   resources :users do
-    resources :machines
+    resources :machines do
+      member do
+        get 'startscan'
+      end
+    end
   end
 
   resources :sessions, only: [:new,:create,:destroy]
   match '/signout',to:'sessions#destroy',via:'delete'
 
   root :to => 'pages#home'
+  match '/testcallback',to:'pages#testcallback',via:'get'
   match '/callback',to:'pages#callback',via:'get'
   match '/about',to:'pages#about',via:'get'
   match '/help',to:'pages#help',via:'get'

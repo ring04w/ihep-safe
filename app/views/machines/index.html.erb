@@ -24,11 +24,11 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th class="col-md-1">IP</th>
-                <th class="col-md-1">High</th>
-                <th class="col-md-1">Mid</th>
-                <th class="col-md-1">Low</th>
-                <th class="col-md-6">Status</th>
+                <th class="col-md-2">IP</th>
+                <th class="col-md-2">High</th>
+                <th class="col-md-2">Mid</th>
+                <th class="col-md-2">Low</th>
+                <th class="col-md-2">Status</th>
                 <th class="col-md-2">Action</th>
               </tr>
             </thead>
@@ -40,14 +40,13 @@
                   <td> <%= machine.mid %> </td>
                   <td class="center"> <%= machine.low %> </td>
                   <td class="center">
-                    <div class="progress progress-striped active">
-                      <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                        <span class="sr-only">45% Complete</span>
-                      </div>
-                    </div>
+                    <%= machine.status %>
                   </td>
                   <td class="center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scanModal">Scan</button>
+                    <%#<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scanModal">Scan</button>%>
+                    <%= link_to("Start Scan",{:action =>'startscan', :id => machine.id},:class => 'btn btn-primary') %>
+                    <%#<button type="button" class="btn btn-primary" >Scan</button>%>
+                    <%#<%= link_to "Start Scan",{controller: :machine,action: :startscan},class: "btn btn-primary" %>
                     <!-- Modal -->
                     <div class="modal fade" id="scanModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
