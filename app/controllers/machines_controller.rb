@@ -10,12 +10,25 @@ class MachinesController < ApplicationController
 
   def startscan
     machine=Machine.find(params[:id])
-    machine.status = "scanning"
-    #machine.status = "waiting"
-    machine.save!
-    puts "Enter start"
-    puts machine.ip
-    ScanWorker.perform_async(machine.ip)
+    if machine.status == "scanning"
+      flash[:info]=machine.ip+" already scanning"
+    elsif machine.status == "unknown"
+      flash[:info]=machine.ip+" can not scan this host"
+    else
+      machine.status = "scanning"
+      #machine.status = "waiting"
+      machine.save!
+      puts "Enter start"
+      puts machine.ip
+      flash[:success]=machine.ip+" Start Scan OK"
+      #ScanWorker.perform_async(machine.ip)
+    end
     redirect_to user_machines_path(current_user)
+  end
+
+  def viewresult
+    machine=Machine.find(params[:id])
+    machine.status = "waiting"
+    machine.save!
   end
 end

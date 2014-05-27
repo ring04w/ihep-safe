@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :machines do
       member do
         get 'startscan'
+        get 'viewresult'
       end
     end
   end
