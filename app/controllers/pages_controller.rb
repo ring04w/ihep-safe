@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def dashboard
   end
   def testcallback
-    user=User.find_by(email:"qfz@ihep.ac.cn")
+    user=User.find_by(email:"zengshan@ihep.ac.cn")
     if user
       sign_in user
       redirect_back_or user_machines_path(user)

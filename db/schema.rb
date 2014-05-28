@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140527072225) do
     t.integer  "high",       default: -1
     t.integer  "mid",        default: -1
     t.integer  "low",        default: -1
-    t.integer  "status",     default: 0
+    t.integer  "status",     default: 3
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,32 +4,6 @@ include REXML
 namespace :ipdb do
   desc "sync"
   task sync: :environment do
-
-    def analysis_report(machine,ip)
-      doc = Document.new(File.new(Rails.root.join('data',ip+'.xml')))
-      report = doc.root[0][0]
-      high=XPath.match(report,"result_count/hole/filtered").map { |x| x.text}
-      machine.high=high[0]
-      mid=XPath.match(report,"result_count/warning/filtered").map { |x| x.text}
-      machine.mid=mid[0]
-      low=XPath.match(report,"result_count/info/filtered").map { |x| x.text}
-      machine.low=low[0]
-      machine.status="scanned"
-      machine.save!
-      report.elements.each("results/result") do |e|
-        port=XPath.first(e,"port").text
-        threat=XPath.first(e,"threat").text
-        description=XPath.first(e,"description").text
-        if description then
-          description=description[0..2000]
-        end
-        xref=XPath.first(e,"nvt/xref").text
-        result=Result.create(port:port,threat:threat,xref:xref,description:description)
-        machine.results << result
-      end
-
-    end
-
     time = Benchmark.measure do
       Rake::Task["db:reset"].invoke
       VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -54,10 +28,7 @@ namespace :ipdb do
             user=User.create(email:k)
           end
           v.each do |ip|
-            machine=Machine.create(ip:ip,user:user)
-            if File.exist?(Rails.root.join('data',ip+'.xml')) then
-              analysis_report(machine,ip)
-            end
+            Machine.create(ip:ip,user:user)
           end
       end
     end
@@ -66,6 +37,32 @@ namespace :ipdb do
 
   desc "scan"
   task scan: :environment do
+
+    def analysis_report(machine)
+      doc = Document.new(File.new(Rails.root.join('data',machine.ip+'.xml')))
+      report = doc.root[0][0]
+      high=XPath.match(report,"result_count/hole/filtered").map { |x| x.text}
+      machine.high=high[0]
+      mid=XPath.match(report,"result_count/warning/filtered").map { |x| x.text}
+      machine.mid=mid[0]
+      low=XPath.match(report,"result_count/info/filtered").map { |x| x.text}
+      machine.low=low[0]
+      machine.status="scanned"
+      machine.save!
+      report.elements.each("results/result") do |e|
+        port=XPath.first(e,"port").text
+        threat=XPath.first(e,"threat").text
+        description=XPath.first(e,"description").text
+        if description then
+          description=description[0..2000]
+        end
+        xref=XPath.first(e,"nvt/xref").text
+        result=Result.create(port:port,threat:threat,xref:xref,description:description)
+        machine.results << result
+      end
+
+    end
+
     machines=Machine.all
     t= File.open( Rails.root.join('tmp','scanip'),"w")
     machines.each do |machine|
@@ -74,11 +71,18 @@ namespace :ipdb do
     t.close
     ip = File.open(Rails.root.join('tmp','scantmp'),"w")
     ip.close
-    system "nmap -F -iL #{t.path} -oG #{ip.path}"
+    system "nmap -T5 -F -iL #{t.path} -oG #{ip.path}"
     File.open(ip.path).each do |line|
       line=line.split(' ')
       if line[3]=="Ports:" then
-        puts line[1]
+        machine=Machine.find_by(ip:line[1])
+        machine.status="waiting"
+        machine.save!
+      end
+    end
+    machines.each do |machine|
+      if File.exist?(Rails.root.join('data',machine.ip+'.xml')) then
+        analysis_report(machine)
       end
     end
   end
