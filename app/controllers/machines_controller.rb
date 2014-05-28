@@ -4,6 +4,7 @@ class MachinesController < ApplicationController
   def index
     @machines = current_user.machines
   end
+
   def show
     @machine = Machine.find(params[:id])
   end
@@ -21,7 +22,7 @@ class MachinesController < ApplicationController
       puts "Enter start"
       puts machine.ip
       flash[:success]=machine.ip+" Start Scan OK"
-      #ScanWorker.perform_async(machine.ip)
+      ScanWorker.perform_async(machine.ip)
     end
     redirect_to user_machines_path(current_user)
   end
@@ -30,5 +31,9 @@ class MachinesController < ApplicationController
     machine=Machine.find(params[:id])
     machine.status = "waiting"
     machine.save!
+    @results=machine.results
   end
+  def downloadresult
+  end
+
 end

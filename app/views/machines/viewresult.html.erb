@@ -1,6 +1,24 @@
 <div class="container">
-  <div class="panel panel-danger">
-    <div class="panel-heading">Heading</div>
-    <div class="panel-body">Panel Danger</div>
-  </div>
+  <% @results.each do |result| %>
+
+    <% if result.threat != "Log" %>
+
+      <% case result.threat when "High" %>
+        <div class="panel panel-danger">
+      <% when "Medium" %>
+        <div class="panel panel-warning">
+      <% when "Low" %>
+        <div class="panel panel-info">
+      <% end %>
+
+        <div class="panel-heading"><%= result.threat %> <%= result.port %></div>
+          <div class="panel-body">
+            <%= result.description %> <br/>
+            <% if result.xref !="NOXREF" %>
+              <%= result.xref %>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
 </div>

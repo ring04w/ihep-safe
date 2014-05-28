@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       member do
         get 'startscan'
         get 'viewresult'
+        get 'downloadresult'
       end
     end
   end
