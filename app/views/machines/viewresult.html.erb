@@ -13,7 +13,7 @@
 
         <div class="panel-heading"><%= result.threat %> <%= result.port %></div>
           <div class="panel-body">
-            <%= result.description %> <br/>
+            <%= simple_format(result.description) %> <br/>
             <% if result.xref !="NOXREF" %>
               <%= result.xref %>
             <% end %>
