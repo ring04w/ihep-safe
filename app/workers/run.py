@@ -14,7 +14,7 @@ import random
 openvas_ip=sys.argv[1]
 admin_name=sys.argv[2]
 admin_password=sys.argv[3]
-result_dir="/root/scanresults"
+result_dir=sys.argv[4]
 manager= VulnscanManager(openvas_ip,admin_name,admin_password)
 def my_print_status(i):
     print str(i),
@@ -58,4 +58,4 @@ def run(ip):
     except Exception,e:
         print e
         return
-run(sys.argv[4])
+run(sys.argv[5])
