@@ -4,6 +4,9 @@ class MachinesController < ApplicationController
   def index
     @machines = current_user.machines.need_scan
   end
+  def all
+    @machines = Machine.all.where("status <3").order("high DESC")
+  end
 
   def show
     @machine = Machine.find(params[:id])

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: "/sidekiq"
   resources :users do
     resources :machines do
+      collection do
+        get 'all'
+      end
       member do
         get 'startscan'
         get 'viewresult'

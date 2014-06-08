@@ -15,6 +15,7 @@
     <ul class="nav navbar-nav">
       <% if signed_in? %>
         <li> <%= link_to t('dashboard'),user_machines_path(current_user),method:"get" %> </li>
+        <li> <%= link_to t('all'),all_user_machines_path,method:"get" %> </li>
       <% end %>
         <li> <%= link_to t('about'),about_path %> </li>
         <li> <%= link_to t('help'),help_path %> </li>
