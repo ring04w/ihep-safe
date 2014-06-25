@@ -50,4 +50,4 @@ test:
 production:
   <<: *default
   socket: /var/run/mysqld/mysqld.sock
-  database: ihep-safe_production
+  database: ihep_safe_production
