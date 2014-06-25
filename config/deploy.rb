@@ -78,7 +78,7 @@ namespace :setup do
   end
 
   desc "ipdb sync"
-      task :seed_db do
+      task :ipdb_sync do
         on roles(:app) do
           within "#{current_path}" do
           with rails_env: :production do
