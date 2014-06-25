@@ -7,7 +7,7 @@ namespace :ipdb do
     time = Benchmark.measure do
       Rake::Task["db:reset"].invoke
       VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-      client = Mysql2::Client.new(host:"192.168.254.9", username:"root",password:ENV['IPDB_DATABASE_PASSWORD'],database:"sec")
+      client = Mysql2::Client.new(host:"202.122.39.231", username:"root",password:ENV['IPDB_DATABASE_PASSWORD'],database:"sec")
       results = client.query("select * from secinfo;");
       emailip=Hash.new
       results.each do |hash|

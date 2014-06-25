@@ -14,8 +14,8 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: <%= ENV['SECURITYDOTIHEP_DATABASE_PASSWORD'] %>
-  socket: /var/run/mysqld/mysqld.sock
+  password: <%= ENV['IHEPSAFE_DATABASE_PASSWORD'] %>
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -49,6 +49,5 @@ test:
 #
 production:
   <<: *default
+  socket: /var/run/mysqld/mysqld.sock
   database: ihep-safe_production
-  username: ihep-safe
-  password: <%= ENV['IHEP-SAFE_DATABASE_PASSWORD'] %>
