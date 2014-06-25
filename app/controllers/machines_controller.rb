@@ -5,7 +5,8 @@ class MachinesController < ApplicationController
     @machines = current_user.machines.need_scan
   end
   def all
-    @machines = Machine.all.where("status <3").order("high DESC")
+    #@machines = Machine.all.where("status <3").order("high DESC")
+    @machines = Machine.all.order("high DESC")
   end
 
   def show

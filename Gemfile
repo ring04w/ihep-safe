@@ -32,10 +32,13 @@ group :development,:test do
   gem 'spring'
   gem 'pry-debugger'
   gem 'coveralls', require: false
+  gem 'capybara'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
 end
 
 group :test do
   gem 'selenium-webdriver'
-  gem 'capybara'
   gem 'factory_girl_rails'
 end
