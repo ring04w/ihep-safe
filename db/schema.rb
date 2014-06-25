@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519042953) do
+ActiveRecord::Schema.define(version: 20140527072225) do
 
   create_table "machines", force: true do |t|
     t.string   "ip"
@@ -19,7 +19,17 @@ ActiveRecord::Schema.define(version: 20140519042953) do
     t.integer  "high",       default: -1
     t.integer  "mid",        default: -1
     t.integer  "low",        default: -1
-    t.integer  "status",     default: 0
+    t.integer  "status",     default: 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "results", force: true do |t|
+    t.integer  "machine_id"
+    t.string   "port"
+    t.string   "threat"
+    t.text     "description"
+    t.text     "xref"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
