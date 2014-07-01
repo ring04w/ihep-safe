@@ -4,6 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
+set :rvm_type, :system
+set :rvm_ruby_version , '2.1.1'
+
 role :app, %w{apps@11.11.11.11}
 role :web, %w{apps@11.11.11.11}
 role :db,  %w{apps@11.11.11.11}
