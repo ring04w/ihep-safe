@@ -2,12 +2,12 @@ class MachinesController < ApplicationController
   before_action :signed_in_user,only: [:index]
 
   def index
-    @machines = current_user.machines.need_scan
     #@machines = current_user.machines.paginate(:page => params[:page], :per_page => 5)
+    @machines = current_user.machines.need_scan.paginate(:page => params[:page], :per_page => 5)
   end
   def all
-    @machines = Machine.all.where("status <3").order("high DESC")
     #@machines = Machine.all.order("high DESC").paginate(:page => params[:page], :per_page => 5)
+    @machines = Machine.all.where("status <3").order("high DESC").paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
