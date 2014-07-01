@@ -38,8 +38,8 @@ namespace :ipdb do
   desc "scan"
   task scan: :environment do
 
-    def analysis_report(machine)
-      doc = Document.new(File.new(Rails.root.join('data',machine.ip+'.xml')))
+    def analysis_report(machine,report_path)
+      doc = Document.new(File.new(report_path))
       report = doc.root[0][0]
       high=XPath.match(report,"result_count/hole/filtered").map { |x| x.text}
       machine.high=high[0]
@@ -74,15 +74,16 @@ namespace :ipdb do
     system "nmap -T5 -F -iL #{t.path} -oG #{ip.path}"
     File.open(ip.path).each do |line|
       line=line.split(' ')
-      if line[3]=="Ports:" then
+      if line[3]=="Ports:" && line[3].include?('open') then
         machine=Machine.find_by(ip:line[1])
         machine.status="waiting"
         machine.save!
       end
     end
     machines.each do |machine|
-      if File.exist?(Rails.root.join('results','xml',machine.ip+'.xml')) then
-        analysis_report(machine)
+      report_path=Rails.root.join('results','xml',machine.ip+'.xml')
+      if File.exist?(report_path) then
+        analysis_report(machine,report_path)
       end
     end
   end
