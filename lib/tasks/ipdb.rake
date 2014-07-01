@@ -41,22 +41,22 @@ namespace :ipdb do
     def analysis_report(machine,report_path)
       doc = Document.new(File.new(report_path))
       report = doc.root[0][0]
-      high=XPath.match(report,"result_count/hole/filtered").map { |x| x.text}
+      high=REXML::XPath.match(report,"result_count/hole/filtered").map { |x| x.text}
       machine.high=high[0]
-      mid=XPath.match(report,"result_count/warning/filtered").map { |x| x.text}
+      mid=REXML::XPath.match(report,"result_count/warning/filtered").map { |x| x.text}
       machine.mid=mid[0]
-      low=XPath.match(report,"result_count/info/filtered").map { |x| x.text}
+      low=REXML::XPath.match(report,"result_count/info/filtered").map { |x| x.text}
       machine.low=low[0]
       machine.status="scanned"
       machine.save!
       report.elements.each("results/result") do |e|
-        port=XPath.first(e,"port").text
-        threat=XPath.first(e,"threat").text
-        description=XPath.first(e,"description").text
+        port=REXML::XPath.first(e,"port").text
+        threat=REXML::XPath.first(e,"threat").text
+        description=REXML::XPath.first(e,"description").text
         if description then
           description=description[0..2000]
         end
-        xref=XPath.first(e,"nvt/xref").text
+        xref=REXML::XPath.first(e,"nvt/xref").text
         result=Result.create(port:port,threat:threat,xref:xref,description:description)
         machine.results << result
       end
@@ -64,6 +64,7 @@ namespace :ipdb do
     end
 
     machines=Machine.all
+=begin
     t= File.open( Rails.root.join('tmp','scanip'),"w")
     machines.each do |machine|
       t << machine.ip+"\n"
@@ -80,6 +81,7 @@ namespace :ipdb do
         machine.save!
       end
     end
+=end
     machines.each do |machine|
       report_path=Rails.root.join('results','xml',machine.ip+'.xml')
       if File.exist?(report_path) then
