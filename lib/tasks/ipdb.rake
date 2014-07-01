@@ -81,7 +81,7 @@ namespace :ipdb do
       end
     end
     machines.each do |machine|
-      if File.exist?(Rails.root.join('data',machine.ip+'.xml')) then
+      if File.exist?(Rails.root.join('results','xml',machine.ip+'.xml')) then
         analysis_report(machine)
       end
     end
