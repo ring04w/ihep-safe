@@ -64,7 +64,6 @@ namespace :ipdb do
     end
 
     machines=Machine.all
-=begin
     t= File.open( Rails.root.join('tmp','scanip'),"w")
     machines.each do |machine|
       t << machine.ip+"\n"
@@ -81,7 +80,6 @@ namespace :ipdb do
         machine.save!
       end
     end
-=end
     machines.each do |machine|
       report_path=Rails.root.join('results','xml',machine.ip+'.xml')
       if File.exist?(report_path) then
