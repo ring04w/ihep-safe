@@ -69,7 +69,7 @@ namespace :setup do
   desc "SCP transfer scan results to the shared folder"
     task :upload_results do
       on roles(:app) do
-        upload! "results", "#{shared_path}/results", via: :scp, recursive: true
+        upload! "results", "#{shared_path}/", via: :scp, recursive: true
       end
   end
 
