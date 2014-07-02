@@ -66,6 +66,13 @@ namespace :setup do
       end
   end
 
+  desc "SCP transfer scan results to the shared folder"
+    task :upload_results do
+      on roles(:app) do
+        upload! "results", "#{shared_path}/results", via: :scp, recursive: true
+      end
+  end
+
   desc "Seed the database."
       task :seed_db do
         on roles(:app) do
