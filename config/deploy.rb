@@ -88,6 +88,17 @@ namespace :setup do
     end
   end
 
+  desc "ipdb scan"
+      task :ipdb_scan do
+        on roles(:app) do
+          within "#{current_path}" do
+          with rails_env: :production do
+          execute :rake, "ipdb:scan"
+        end
+      end
+    end
+  end
+
 end
 
 before "deploy:check:linked_files", "setup:upload_yml"
