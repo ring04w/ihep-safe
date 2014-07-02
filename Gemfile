@@ -17,7 +17,6 @@ gem 'font-awesome-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'whenever',:require => false
-gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'sidekiq'
 gem 'sinatra',require: false
 gem 'slim'
@@ -39,6 +38,7 @@ group :development,:test do
 end
 
 group :test do
+  gem "codeclimate-test-reporter",require: nil
   gem 'selenium-webdriver'
   gem 'factory_girl_rails'
 end
