@@ -2,12 +2,12 @@ class MachinesController < ApplicationController
   before_action :signed_in_user,only: [:index]
 
   def index
-    #@machines = current_user.machines.need_scan
-    @machines = current_user.machines.paginate(:page => params[:page], :per_page => 5)
+    #@machines = current_user.machines.paginate(:page => params[:page], :per_page => 5)
+    @machines = current_user.machines.need_scan.order("high DESC").paginate(:page => params[:page], :per_page => 5)
   end
   def all
-    #@machines = Machine.all.where("status <3").order("high DESC")
-    @machines = Machine.all.order("high DESC").paginate(:page => params[:page], :per_page => 5)
+    #@machines = Machine.all.order("high DESC").paginate(:page => params[:page], :per_page => 5)
+    @machines = Machine.all.where("status <3").order("high DESC").paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
@@ -34,11 +34,16 @@ class MachinesController < ApplicationController
 
   def viewresult
     machine=Machine.find(params[:id])
-    machine.status = "waiting"
+    machine.status ="scanned"
     machine.save!
     @results=machine.results
   end
+
   def downloadresult
+    machine=Machine.find(params[:id])
+    puts machine.ip
+    result_path = Rails.root.join('results','html',"#{ machine.ip }.html")
+    send_file result_path
   end
 
 end

@@ -12,6 +12,10 @@ zh-CN:
   high: 高危
   mid: 中等
   low: 低危
+  will_paginate:
+    previous_label: "&#8592; 前一页"
+    next_label: "后一页 &#8594;"
+    page_gap: "&hellip;"
   date:
     abbr_day_names:
     - 日
