@@ -14,15 +14,17 @@ zh-CN:
   min_cost: 最小的花费，界面友好
   min_cost_more: 基于云安全的威胁检测，减少系统资源消耗，全年7x24支持
   sign_in: 登录
-  startscan: 开始扫描
-  viewresult: 查看扫描结果
-  downloadresult: 下载扫描结果
+  start_scan: 开始扫描
+  view_result: 查看扫描结果
+  download_result: 下载扫描结果
+  scan_result: 扫描结果
   action: 操作
   status: 状态
   host: 主机
   high: 高危
   mid: 中等
   low: 低危
+  scanned: 扫描完成
   will_paginate:
     previous_label: "&#8592; 前一页"
     next_label: "后一页 &#8594;"
