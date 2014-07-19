@@ -1,8 +1,19 @@
 zh-CN:
-  safeihep: 安全测评
+  safeihep: 云安全服务平台
+  safeihepplatform: 云安全服务平台
   dashboard: 控制面板
   about: 关于
-  help: 帮助
+  help: 帮助中心
+  seven_plus_twenty_four_hours: 提供 7x24 小时可靠服务
+  use_and_admin_easy: 使用和管理简单
+  use_and_admin_easy_more: |
+    随时启用,随时防护,基于Web的管理控制台进行集中管理,自动维护和更新
+  max_protection: 最大程度的保护
+  max_protection_more: |
+    保护系统，防护网络攻击,自动透明升级
+  min_cost: 最小的花费，界面友好
+  min_cost_more: 基于云安全的威胁检测，减少系统资源消耗，全年7x24支持
+  sign_in: 登录
   startscan: 开始扫描
   viewresult: 查看扫描结果
   downloadresult: 下载扫描结果
