@@ -2,14 +2,8 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">All
-        <small>It's Nice to Meet You!</small>
+      <h1 class="page-header"><%= t('admin_dashboard') %>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="/">Home</a>
-        </li>
-        <li class="active">All</li>
-      </ol>
     </div>
   </div>
   <%= high_chart("my_id", @chart) %>
@@ -27,7 +21,7 @@
     <div class="col-md-12">
       <div class="panel panel-success">
         <div class="panel-heading">
-          <div class="panel-title">Scan Results</div>
+          <div class="panel-title"><%= t('scan_result') %></div>
         </div>
         <%#<div class="panel-body">%>
 
@@ -53,7 +47,7 @@
                     <%= machine.status %>
                   </td>
                   <td class="center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scanModal<%= machine.id %>"><%= t('startscan') %></button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scanModal<%= machine.id %>"><%= t('start_scan') %></button>
                     <!-- scanModal -->
                     <div class="modal fade" id="scanModal<%= machine.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -73,8 +67,8 @@
                       </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
 
-                    <%= link_to(t('viewresult'),{:action =>'viewresult', :id => machine.id},:class => 'btn btn-success') %>
-                    <%= link_to(t('downloadresult'),{:action =>'downloadresult', :id => machine.id},:class => 'btn btn-info') %>
+                    <%= link_to(t('view_result'),{:action =>'viewresult', :id => machine.id},:class => 'btn btn-success') %>
+                    <%= link_to(t('download_result'),{:action =>'downloadresult', :id => machine.id},:class => 'btn btn-info') %>
 
                   </td>
                 </tr>

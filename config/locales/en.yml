@@ -20,3 +20,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  chinese: 中文
+  english: English

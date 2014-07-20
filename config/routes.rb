@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :machines do
       collection do
-        get 'all'
+        get 'admin'
       end
       member do
         get 'startscan'

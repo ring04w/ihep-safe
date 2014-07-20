@@ -5,7 +5,7 @@ class MachinesController < ApplicationController
     #@machines = current_user.machines.paginate(:page => params[:page], :per_page => 5)
     @machines = current_user.machines.need_scan.order("high DESC").paginate(:page => params[:page], :per_page => 5)
   end
-  def all
+  def admin
     #@machines = Machine.all.order("high DESC").paginate(:page => params[:page], :per_page => 5)
     @machines = Machine.all.where("status <3").order("high DESC").paginate(:page => params[:page], :per_page => 5)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|

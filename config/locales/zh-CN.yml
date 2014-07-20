@@ -1,7 +1,10 @@
 zh-CN:
+  english: English
+  chinese: 中文
   safeihep: 云安全服务平台
   safeihepplatform: 云安全服务平台
   dashboard: 控制面板
+  admin_dashboard: 管理员面板
   about: 关于
   help: 帮助中心
   seven_plus_twenty_four_hours: 提供 7x24 小时可靠服务
@@ -25,6 +28,19 @@ zh-CN:
   mid: 中等
   low: 低危
   scanned: 扫描完成
+  question1: |
+    什么是云安全服务平台
+  answer1: |
+    云安全平台是可以通过云安全扫描，保护您的系统安全
+  question2: |
+    如何使用云安全服务平台
+  answer2: |
+    通过Web端提交扫描任务即可
+  question3: |
+    我有问题该如何反馈或求助?
+  answer3: |
+    邮件咨询：helpdesk@ihep.ac.cn
+    客服热线：010-88236005
   will_paginate:
     previous_label: "&#8592; 前一页"
     next_label: "后一页 &#8594;"
