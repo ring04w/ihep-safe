@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140527072225) do
   create_table "users", force: true do |t|
     t.string  "name",           default: "default"
     t.string  "email"
+    t.string  "dept"
     t.string  "remember_token"
     t.integer "role",           default: 0
   end

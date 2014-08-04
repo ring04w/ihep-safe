@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="#"><%= t('vul_count') %></a></li>
+        <li><a href="#"><a href="#"><%= t('vul_every') %></a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Export</a></li>
+        <li><a href="#">Another nav item</a></li>
+      </ul>
+    </div>
+    <div class="col-md-10 main">
+      <h1 class="page-header"><%= t('admin_dashboard') %></h1>
+      <%= high_chart("my_id", @chart) %>
+
+    </div>
+  </div>
+</div>

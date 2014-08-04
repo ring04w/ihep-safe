@@ -21,11 +21,16 @@ namespace :ipdb do
             emailip[email] << ip
         end
       end
+      emaildept=Hash.new
+      results = client.query("select * from user;");
+      results.each do |hash|
+        emaildept[hash['email']]=hash['dept']
+      end
       emailip.each do |k,v|
           if (k=='wengcc@ihep.ac.cn') then
-            user=User.create(email:k,role:2)
+            user=User.create(email:k,dept:emaildept[k],role:2)
           else
-            user=User.create(email:k)
+            user=User.create(email:k,dept:emaildept[k])
           end
           v.each do |ip|
             Machine.create(ip:ip,user:user)
@@ -64,15 +69,15 @@ namespace :ipdb do
     end
 
     machines=Machine.all
-    t= File.open( Rails.root.join('tmp','scanip'),"w")
-    machines.each do |machine|
-      t << machine.ip+"\n"
-    end
-    t.close
-    ip = File.open(Rails.root.join('tmp','scantmp'),"w")
-    ip.close
-    system "nmap -T5 -F -iL #{t.path} -oG #{ip.path}"
-    File.open(ip.path).each do |line|
+    #t= File.open( Rails.root.join('tmp','scanip'),"w")
+    #machines.each do |machine|
+      #t << machine.ip+"\n"
+    #end
+    #t.close
+    #ip = File.open(Rails.root.join('tmp','scantmp'),"w")
+    #ip.close
+    #system "nmap -T5 -F -iL #{t.path} -oG #{ip.path}"
+    File.open(Rails.root.join('tmp','scantmp'),"r").each do |line|
       line=line.split(' ')
       if line[3]=="Ports:" && line[3].include?('open') then
         machine=Machine.find_by(ip:line[1])

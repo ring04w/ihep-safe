@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name,default:"default"
       t.string :email
+      t.string :dept,default:"other"
       t.string :remember_token
       t.integer :role,default: 0
     end

@@ -15,7 +15,7 @@
     <ul class="nav navbar-nav">
       <% if signed_in? %>
         <li> <%= link_to t('dashboard'),user_machines_path(current_user),method:"get" %> </li>
-        <li> <%= link_to t('admin_dashboard'),admin_user_machines_path(current_user),method:"get" %> </li>
+        <li> <%= link_to t('admin_dashboard'),vulcount_user_machines_path(current_user),method:"get" %> </li>
       <% end %>
         <li> <%= link_to t('help'),help_path %> </li>
     </ul>

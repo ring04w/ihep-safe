@@ -21,6 +21,7 @@ zh-CN:
   view_result: 查看扫描结果
   download_result: 下载扫描结果
   scan_result: 扫描结果
+  vul_count: 漏洞数量概况
   action: 操作
   status: 状态
   host: 主机
