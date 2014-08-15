@@ -21,6 +21,7 @@ gem 'sidekiq'
 gem 'sinatra',require: false
 gem 'slim'
 gem 'daemon-spawn'
+gem 'lazy_high_charts'
 
 group :doc do
   gem 'sdoc','~> 0.4.0'
