@@ -6,7 +6,7 @@ class MachinesController < ApplicationController
     @machines = current_user.machines.need_scan.order("high DESC").paginate(:page => params[:page], :per_page => 5)
   end
   def vulcount
-    #@machines = Machine.all.order("high DESC").paginate(:page => params[:page], :per_page => 5)
+    @machines = Machine.all.order("high DESC").paginate(:page => params[:page], :per_page => 5)
     @LowCount=Result.where(threat:"Low").count()
     @HighCount=Result.where(threat:"High").count()
     @MidCount=Result.where(threat:"Medium").count()
