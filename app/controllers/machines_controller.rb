@@ -50,10 +50,7 @@ class MachinesController < ApplicationController
       flash[:info]=machine.ip+" can not scan this host"
     else
       machine.status = "scanning"
-      #machine.status = "waiting"
       machine.save!
-      puts "Enter start"
-      puts machine.ip
       flash[:success]=machine.ip+" Start Scan OK"
       ScanWorker.perform_async(machine.ip)
     end
