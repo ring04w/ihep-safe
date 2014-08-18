@@ -77,13 +77,9 @@ namespace :ipdb do
     #ip = File.open(Rails.root.join('tmp','scantmp'),"w")
     #ip.close
     #system "nmap -T5 -F -iL #{t.path} -oG #{ip.path}"
-    File.open(Rails.root.join('tmp','scantmp'),"r").each do |line|
-      line=line.split(' ')
-      if line[3]=="Ports:" && line[3].include?('open') then
-        machine=Machine.find_by(ip:line[1])
-        machine.status="waiting"
-        machine.save!
-      end
+    machines.each do |machine|
+      machine.status="waiting"
+      machine.save!
     end
     machines.each do |machine|
       report_path=Rails.root.join('results','xml',machine.ip+'.xml')
