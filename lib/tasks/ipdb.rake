@@ -69,18 +69,15 @@ namespace :ipdb do
     end
 
     machines=Machine.all
-    #t= File.open( Rails.root.join('tmp','scanip'),"w")
-    #machines.each do |machine|
-      #t << machine.ip+"\n"
-    #end
-    #t.close
-    #ip = File.open(Rails.root.join('tmp','scantmp'),"w")
-    #ip.close
-    #system "nmap -T5 -F -iL #{t.path} -oG #{ip.path}"
     machines.each do |machine|
-      machine.status="waiting"
-      machine.save!
+      report_path=Rails.root.join('results','xml',machine.ip+'.xml')
+      if File.exist?(report_path) then
+        machine.status="waiting"
+      else
+        machine.status="unknown"
+      end
     end
+
     machines.each do |machine|
       report_path=Rails.root.join('results','xml',machine.ip+'.xml')
       if File.exist?(report_path) then
